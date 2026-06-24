@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DriveHub - Quản Lý Học Viên</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        .sidebar-item {
+            @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-300 hover:bg-blue-700 hover:text-white transition cursor-pointer;
+        }
+        .sidebar-item.active {
+            @apply bg-blue-700 text-white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex">
+    <aside class="w-64 bg-blue-900 text-white flex flex-col fixed h-full">
+        <a href="index.html" class="p-5 border-b border-blue-800 flex items-center gap-3 hover:bg-blue-800/50 transition">
+            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-car text-white"></i>
+            </div>
+            <div>
+                <h2 class="font-bold text-lg">DriveHub</h2>
+                <p class="text-xs text-blue-300">Quản lý đào tạo lái xe</p>
+            </div>
+        </a>
+        <nav class="flex-1 p-4 space-y-1">
+            <div class="sidebar-item" onclick="window.location.href='dashboard.html'">
+                <i class="fa-solid fa-chart-pie w-5"></i><span>Dashboard</span>
+            </div>
+            <div class="sidebar-item active">
+                <i class="fa-solid fa-user-graduate w-5"></i><span>Học Viên</span>
+            </div>
+            <div class="sidebar-item" onclick="window.location.href='teachers.html'">
+                <i class="fa-solid fa-chalkboard-user w-5"></i><span>Giáo Viên</span>
+            </div>
+            <div class="sidebar-item" onclick="window.location.href='cars.html'">
+                <i class="fa-solid fa-car-side w-5"></i><span>Xe Tập Lái</span>
+            </div>
+            <div class="sidebar-item"><i class="fa-solid fa-book w-5"></i><span>Chương Trình Học</span></div>
+            <div class="sidebar-item"><i class="fa-solid fa-door-open w-5"></i><span>Phòng Học</span></div>
+            <div class="sidebar-item"><i class="fa-solid fa-file-lines w-5"></i><span>Hồ Sơ Học Viên</span></div>
+            <div class="sidebar-item"><i class="fa-solid fa-road w-5"></i><span>Thi Sát Hạch</span></div>
+            <div class="sidebar-item"><i class="fa-solid fa-id-card w-5"></i><span>Tra Cứu GPLX</span></div>
+        </nav>
+        <div class="p-4 border-t border-blue-800">
+            <div class="sidebar-item" onclick="window.location.href='login.html'"><i class="fa-solid fa-right-from-bracket w-5"></i><span>Đăng Xuất</span></div>
+        </div>
+    </aside>
+
+    <div class="flex-1 ml-64">
+        <!-- Quick Nav -->
+        <div class="bg-white border-b border-gray-200 px-8 py-2 flex items-center gap-1 text-sm">
+            <a href="index.html" class="text-gray-400 hover:text-blue-600 px-2 py-1"><i class="fa-solid fa-house"></i></a>
+            <span class="text-gray-300">/</span>
+            <a href="dashboard.html" class="text-gray-500 hover:text-blue-600 px-2 py-1">Dashboard</a>
+            <span class="text-gray-300">/</span>
+            <a href="students.html" class="text-blue-600 font-medium px-2 py-1">Học Viên</a>
+            <span class="text-gray-300 mx-2">|</span>
+            <a href="teachers.html" class="text-gray-500 hover:text-blue-600 px-2 py-1">Giáo Viên</a>
+            <a href="cars.html" class="text-gray-500 hover:text-blue-600 px-2 py-1">Xe Tập Lái</a>
+        </div>
+        <header class="bg-white shadow-sm border-b border-gray-200 px-8 py-4 flex items-center justify-between">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800">Quản Lý Học Viên</h1>
+                <p class="text-sm text-gray-500">Danh sách học viên trường dạy lái xe</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <i class="fa-solid fa-bell text-gray-400 text-lg cursor-pointer hover:text-blue-600"></i>
+                    <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center">3</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-medium">AD</div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-700">Admin</p>
+                        <p class="text-xs text-gray-400">Quản trị viên</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="p-8">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mb-6 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <i class="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Tìm kiếm học viên..."
+                        class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none w-72" />
+                    </div>
+                    <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500">
+                        <option>Tất cả hạng xe</option>
+                        <option>B1</option>
+                        <option>B2</option>
+                        <option>C</option>
+                    </select>
+                    <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500">
+                        <option>Tất cả trạng thái</option>
+                        <option>Đang học</option>
+                        <option>Chờ xếp lớp</option>
+                        <option>Đã tốt nghiệp</option>
+                    </select>
+                </div>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm font-medium">
+                    <i class="fa-solid fa-plus mr-1"></i> Thêm học viên
+                </button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="bg-gray-50 text-left text-gray-500 border-b border-gray-200">
+                                <th class="p-4 font-medium"><input type="checkbox" /></th>
+                                <th class="p-4 font-medium">Mã HV</th>
+                                <th class="p-4 font-medium">Họ và tên</th>
+                                <th class="p-4 font-medium">Ngày sinh</th>
+                                <th class="p-4 font-medium">Số điện thoại</th>
+                                <th class="p-4 font-medium">Hạng xe</th>
+                                <th class="p-4 font-medium">Ngày đăng ký</th>
+                                <th class="p-4 font-medium">Trạng thái</th>
+                                <th class="p-4 font-medium text-center">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="p-4"><input type="checkbox" /></td>
+                                <td class="p-4 font-medium text-gray-700">HV001</td>
+                                <td class="p-4"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-sm font-medium">NA</div><span>Nguyễn Văn An</span></div></td>
+                                <td class="p-4">15/03/1998</td>
+                                <td class="p-4">0987 654 321</td>
+                                <td class="p-4"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-medium">B1</span></td>
+                                <td class="p-4">15/06/2026</td>
+                                <td class="p-4"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">Đang học</span></td>
+                                <td class="p-4 text-center">
+                                    <button class="text-blue-600 hover:text-blue-800 mx-1"><i class="fa-solid fa-eye"></i></button>
+                                    <button class="text-yellow-600 hover:text-yellow-800 mx-1"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-red-600 hover:text-red-800 mx-1"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="p-4"><input type="checkbox" /></td>
+                                <td class="p-4 font-medium text-gray-700">HV002</td>
+                                <td class="p-4"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-sm font-medium">TB</div><span>Trần Thị Bình</span></div></td>
+                                <td class="p-4">22/07/1999</td>
+                                <td class="p-4">0978 123 456</td>
+                                <td class="p-4"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-medium">B2</span></td>
+                                <td class="p-4">14/06/2026</td>
+                                <td class="p-4"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">Đang học</span></td>
+                                <td class="p-4 text-center">
+                                    <button class="text-blue-600 hover:text-blue-800 mx-1"><i class="fa-solid fa-eye"></i></button>
+                                    <button class="text-yellow-600 hover:text-yellow-800 mx-1"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-red-600 hover:text-red-800 mx-1"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="p-4"><input type="checkbox" /></td>
+                                <td class="p-4 font-medium text-gray-700">HV003</td>
+                                <td class="p-4"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 text-sm font-medium">LC</div><span>Lê Văn Cường</span></div></td>
+                                <td class="p-4">10/11/1997</td>
+                                <td class="p-4">0965 432 109</td>
+                                <td class="p-4"><span class="bg-purple-100 text-purple-700 px-2 py-0.5 rounded text-xs font-medium">C</span></td>
+                                <td class="p-4">12/06/2026</td>
+                                <td class="p-4"><span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded text-xs">Chờ xếp lớp</span></td>
+                                <td class="p-4 text-center">
+                                    <button class="text-blue-600 hover:text-blue-800 mx-1"><i class="fa-solid fa-eye"></i></button>
+                                    <button class="text-yellow-600 hover:text-yellow-800 mx-1"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-red-600 hover:text-red-800 mx-1"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="p-4"><input type="checkbox" /></td>
+                                <td class="p-4 font-medium text-gray-700">HV004</td>
+                                <td class="p-4"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center text-red-600 text-sm font-medium">PD</div><span>Phạm Thị Dung</span></div></td>
+                                <td class="p-4">05/02/2000</td>
+                                <td class="p-4">0999 888 777</td>
+                                <td class="p-4"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-medium">B1</span></td>
+                                <td class="p-4">10/06/2026</td>
+                                <td class="p-4"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">Đã tốt nghiệp</span></td>
+                                <td class="p-4 text-center">
+                                    <button class="text-blue-600 hover:text-blue-800 mx-1"><i class="fa-solid fa-eye"></i></button>
+                                    <button class="text-yellow-600 hover:text-yellow-800 mx-1"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-red-600 hover:text-red-800 mx-1"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="p-4"><input type="checkbox" /></td>
+                                <td class="p-4 font-medium text-gray-700">HV005</td>
+                                <td class="p-4"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 text-sm font-medium">HE</div><span>Hoàng Văn Em</span></div></td>
+                                <td class="p-4">18/09/1996</td>
+                                <td class="p-4">0977 666 555</td>
+                                <td class="p-4"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs font-medium">B2</span></td>
+                                <td class="p-4">08/06/2026</td>
+                                <td class="p-4"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">Đang học</span></td>
+                                <td class="p-4 text-center">
+                                    <button class="text-blue-600 hover:text-blue-800 mx-1"><i class="fa-solid fa-eye"></i></button>
+                                    <button class="text-yellow-600 hover:text-yellow-800 mx-1"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-red-600 hover:text-red-800 mx-1"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-4"><input type="checkbox" /></td>
+                                <td class="p-4 font-medium text-gray-700">HV006</td>
+                                <td class="p-4"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 text-sm font-medium">MP</div><span>Mai Thị Phương</span></div></td>
+                                <td class="p-4">30/12/2001</td>
+                                <td class="p-4">0988 444 333</td>
+                                <td class="p-4"><span class="bg-purple-100 text-purple-700 px-2 py-0.5 rounded text-xs font-medium">C</span></td>
+                                <td class="p-4">05/06/2026</td>
+                                <td class="p-4"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">Đang học</span></td>
+                                <td class="p-4 text-center">
+                                    <button class="text-blue-600 hover:text-blue-800 mx-1"><i class="fa-solid fa-eye"></i></button>
+                                    <button class="text-yellow-600 hover:text-yellow-800 mx-1"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-red-600 hover:text-red-800 mx-1"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex items-center justify-between p-4 border-t border-gray-100">
+                    <p class="text-sm text-gray-500">Hiển thị 1-6 của 256 học viên</p>
+                    <div class="flex items-center gap-2">
+                        <button class="px-3 py-1.5 border border-gray-300 rounded text-sm hover:bg-gray-50"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="px-3 py-1.5 bg-blue-600 text-white rounded text-sm">1</button>
+                        <button class="px-3 py-1.5 border border-gray-300 rounded text-sm hover:bg-gray-50">2</button>
+                        <button class="px-3 py-1.5 border border-gray-300 rounded text-sm hover:bg-gray-50">3</button>
+                        <span class="text-gray-400">...</span>
+                        <button class="px-3 py-1.5 border border-gray-300 rounded text-sm hover:bg-gray-50">43</button>
+                        <button class="px-3 py-1.5 border border-gray-300 rounded text-sm hover:bg-gray-50"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mx-8 mb-8 flex items-center justify-between">
+            <a href="dashboard.html" class="text-sm text-gray-500 hover:text-blue-600"><i class="fa-solid fa-arrow-left mr-1"></i> Dashboard</a>
+            <a href="index.html" class="text-sm text-gray-500 hover:text-blue-600"><i class="fa-solid fa-house mr-1"></i> Trang chủ</a>
+            <a href="teachers.html" class="text-sm text-blue-600 hover:underline">Giáo Viên <i class="fa-solid fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</body>
+</html>

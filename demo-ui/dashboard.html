@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DriveHub - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        .sidebar-item {
+            @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-gray-300 hover:bg-blue-700 hover:text-white transition cursor-pointer;
+        }
+        .sidebar-item.active {
+            @apply bg-blue-700 text-white;
+        }
+        .stat-card {
+            @apply bg-white rounded-xl p-6 shadow-sm border border-gray-100;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-blue-900 text-white flex flex-col fixed h-full">
+        <a href="index.html" class="p-5 border-b border-blue-800 flex items-center gap-3 hover:bg-blue-800/50 transition">
+            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-car text-white"></i>
+            </div>
+            <div>
+                <h2 class="font-bold text-lg">DriveHub</h2>
+                <p class="text-xs text-blue-300">Quản lý đào tạo lái xe</p>
+            </div>
+        </a>
+
+        <nav class="flex-1 p-4 space-y-1">
+            <div class="sidebar-item active">
+                <i class="fa-solid fa-chart-pie w-5"></i>
+                <span>Dashboard</span>
+            </div>
+            <div class="sidebar-item" onclick="window.location.href='students.html'">
+                <i class="fa-solid fa-user-graduate w-5"></i>
+                <span>Học Viên</span>
+            </div>
+            <div class="sidebar-item" onclick="window.location.href='teachers.html'">
+                <i class="fa-solid fa-chalkboard-user w-5"></i>
+                <span>Giáo Viên</span>
+            </div>
+            <div class="sidebar-item" onclick="window.location.href='cars.html'">
+                <i class="fa-solid fa-car-side w-5"></i>
+                <span>Xe Tập Lái</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-book w-5"></i>
+                <span>Chương Trình Học</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-door-open w-5"></i>
+                <span>Phòng Học</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-file-lines w-5"></i>
+                <span>Hồ Sơ Học Viên</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-road w-5"></i>
+                <span>Thi Sát Hạch</span>
+            </div>
+            <div class="sidebar-item">
+                <i class="fa-solid fa-id-card w-5"></i>
+                <span>Tra Cứu GPLX</span>
+            </div>
+        </nav>
+
+        <div class="p-4 border-t border-blue-800">
+            <div class="sidebar-item" onclick="window.location.href='login.html'">
+                <i class="fa-solid fa-right-from-bracket w-5"></i>
+                <span>Đăng Xuất</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 ml-64">
+        <!-- Quick Nav -->
+        <div class="bg-white border-b border-gray-200 px-8 py-2 flex items-center gap-1 text-sm">
+            <a href="index.html" class="text-gray-400 hover:text-blue-600 px-2 py-1"><i class="fa-solid fa-house"></i></a>
+            <span class="text-gray-300">/</span>
+            <a href="dashboard.html" class="text-blue-600 font-medium px-2 py-1">Dashboard</a>
+            <span class="text-gray-300 mx-2">|</span>
+            <a href="students.html" class="text-gray-500 hover:text-blue-600 px-2 py-1">Học Viên</a>
+            <a href="teachers.html" class="text-gray-500 hover:text-blue-600 px-2 py-1">Giáo Viên</a>
+            <a href="cars.html" class="text-gray-500 hover:text-blue-600 px-2 py-1">Xe Tập Lái</a>
+        </div>
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b border-gray-200 px-8 py-4 flex items-center justify-between">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
+                <p class="text-sm text-gray-500">Tổng quan hệ thống</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <i class="fa-solid fa-bell text-gray-400 text-lg cursor-pointer hover:text-blue-600"></i>
+                    <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center">3</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-blue-600 rounded-full flex items-center justify-center text-white text-sm font-medium">AD</div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-700">Admin</p>
+                        <p class="text-xs text-gray-400">Quản trị viên</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="p-8">
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="stat-card">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-user-graduate text-blue-600 text-xl"></i>
+                        </div>
+                        <span class="text-green-500 text-sm bg-green-50 px-2 py-1 rounded"><i class="fa-solid fa-arrow-up mr-1"></i>12%</span>
+                    </div>
+                    <p class="text-3xl font-bold text-gray-800">256</p>
+                    <p class="text-sm text-gray-500">Tổng học viên</p>
+                </div>
+                <div class="stat-card">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-chalkboard-user text-green-600 text-xl"></i>
+                        </div>
+                        <span class="text-green-500 text-sm bg-green-50 px-2 py-1 rounded"><i class="fa-solid fa-arrow-up mr-1"></i>5%</span>
+                    </div>
+                    <p class="text-3xl font-bold text-gray-800">18</p>
+                    <p class="text-sm text-gray-500">Giáo viên</p>
+                </div>
+                <div class="stat-card">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-car-side text-yellow-600 text-xl"></i>
+                        </div>
+                        <span class="text-red-500 text-sm bg-red-50 px-2 py-1 rounded"><i class="fa-solid fa-arrow-down mr-1"></i>3%</span>
+                    </div>
+                    <p class="text-3xl font-bold text-gray-800">12</p>
+                    <p class="text-sm text-gray-500">Xe tập lái</p>
+                </div>
+                <div class="stat-card">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-road text-purple-600 text-xl"></i>
+                        </div>
+                        <span class="text-green-500 text-sm bg-green-50 px-2 py-1 rounded"><i class="fa-solid fa-arrow-up mr-1"></i>25%</span>
+                    </div>
+                    <p class="text-3xl font-bold text-gray-800">42</p>
+                    <p class="text-sm text-gray-500">Thi sát hạch</p>
+                </div>
+            </div>
+
+            <!-- Charts & Tables -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <h3 class="font-semibold text-gray-800 mb-4">Học viên đăng ký theo tháng</h3>
+                    <div class="flex items-end gap-3 h-40">
+                        <div class="flex-1 flex flex-col items-center gap-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 40%"></div>
+                            <span class="text-xs text-gray-500">T1</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 55%"></div>
+                            <span class="text-xs text-gray-500">T2</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 30%"></div>
+                            <span class="text-xs text-gray-500">T3</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 65%"></div>
+                            <span class="text-xs text-gray-500">T4</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 45%"></div>
+                            <span class="text-xs text-gray-500">T5</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 75%"></div>
+                            <span class="text-xs text-gray-500">T6</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 80%"></div>
+                            <span class="text-xs text-gray-500">T7</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 60%"></div>
+                            <span class="text-xs text-gray-500">T8</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 90%"></div>
+                            <span class="text-xs text-gray-500">T9</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 70%"></div>
+                            <span class="text-xs text-gray-500">T10</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 85%"></div>
+                            <span class="text-xs text-gray-500">T11</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center gap-1">
+                            <div class="w-full bg-blue-500 rounded-t" style="height: 95%"></div>
+                            <span class="text-xs text-gray-500">T12</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                    <h3 class="font-semibold text-gray-800 mb-4">Hoạt động gần đây</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3 pb-3 border-b border-gray-100">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-plus text-green-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-700">Thêm học viên <span class="font-medium">Nguyễn Văn A</span></p>
+                                <p class="text-xs text-gray-400">5 phút trước</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 pb-3 border-b border-gray-100">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-pen text-blue-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-700">Cập nhật lịch học lớp <span class="font-medium">B1.01</span></p>
+                                <p class="text-xs text-gray-400">15 phút trước</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 pb-3 border-b border-gray-100">
+                            <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-car text-yellow-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-700">Bảo dưỡng xe <span class="font-medium">29A-123.45</span></p>
+                                <p class="text-xs text-gray-400">1 giờ trước</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-file text-red-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-700">Nộp hồ sơ thi cho <span class="font-medium">5 học viên</span></p>
+                                <p class="text-xs text-gray-400">2 giờ trước</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Students Table -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-semibold text-gray-800">Học viên mới nhất</h3>
+                    <button class="text-sm text-blue-600 hover:underline" onclick="window.location.href='students.html'">Xem tất cả</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="text-left text-gray-500 border-b border-gray-200">
+                                <th class="pb-3 font-medium">Họ tên</th>
+                                <th class="pb-3 font-medium">Số điện thoại</th>
+                                <th class="pb-3 font-medium">Hạng xe</th>
+                                <th class="pb-3 font-medium">Ngày đăng ký</th>
+                                <th class="pb-3 font-medium">Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="py-3">Nguyễn Văn An</td>
+                                <td class="py-3">0987 654 321</td>
+                                <td class="py-3">B1</td>
+                                <td class="py-3">15/06/2026</td>
+                                <td class="py-3"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">Đang học</span></td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="py-3">Trần Thị Bình</td>
+                                <td class="py-3">0978 123 456</td>
+                                <td class="py-3">B2</td>
+                                <td class="py-3">14/06/2026</td>
+                                <td class="py-3"><span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs">Đang học</span></td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="py-3">Lê Văn Cường</td>
+                                <td class="py-3">0965 432 109</td>
+                                <td class="py-3">C</td>
+                                <td class="py-3">12/06/2026</td>
+                                <td class="py-3"><span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded text-xs">Chờ xếp lớp</span></td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="py-3">Phạm Thị Dung</td>
+                                <td class="py-3">0999 888 777</td>
+                                <td class="py-3">B1</td>
+                                <td class="py-3">10/06/2026</td>
+                                <td class="py-3"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-xs">Đã tốt nghiệp</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 mx-8 mb-8 flex items-center justify-between">
+            <a href="login.html" class="text-sm text-gray-500 hover:text-blue-600"><i class="fa-solid fa-arrow-left mr-1"></i> Đăng Nhập</a>
+            <a href="index.html" class="text-sm text-gray-500 hover:text-blue-600"><i class="fa-solid fa-house mr-1"></i> Trang chủ</a>
+            <a href="students.html" class="text-sm text-blue-600 hover:underline">Học Viên <i class="fa-solid fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</body>
+</html>

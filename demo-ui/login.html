@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DriveHub - Đăng Nhập</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-blue-600 rounded-full mb-4">
+                <i class="fa-solid fa-car text-white text-3xl"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800">DriveHub</h1>
+            <p class="text-gray-500 mt-1">Hệ Thống Quản Lý Trường Dạy Lái Xe</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6">Đăng Nhập</h2>
+
+            <form id="loginForm" onsubmit="event.preventDefault(); window.location.href='dashboard.html'">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Tên đăng nhập</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" value="admin"
+                        class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Mật khẩu</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="password" value="123456"
+                        class="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" />
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mb-6">
+                    <label class="flex items-center text-sm text-gray-600">
+                        <input type="checkbox" checked class="mr-2" /> Ghi nhớ
+                    </label>
+                    <a href="#" class="text-sm text-blue-600 hover:underline">Quên mật khẩu?</a>
+                </div>
+
+                <button type="submit"
+                class="w-full bg-blue-600 text-white py-2.5 rounded-lg hover:bg-blue-700 font-medium transition">
+                <i class="fa-solid fa-right-to-bracket mr-2"></i>Đăng Nhập
+            </button>
+        </form>
+
+        <div class="mt-6 pt-6 border-t border-gray-200">
+            <p class="text-sm text-gray-500 text-center mb-3">Tài khoản demo</p>
+            <div class="space-y-2 text-sm text-gray-600">
+                <div class="flex justify-between"><span>Admin</span><span class="font-mono">admin / 123456</span></div>
+                <div class="flex justify-between"><span>Giáo viên</span><span class="font-mono">giaovien / 123456</span></div>
+                <div class="flex justify-between"><span>Học viên</span><span class="font-mono">hocvien / 123456</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-6 space-x-4">
+        <a href="index.html" class="text-sm text-blue-600 hover:underline"><i class="fa-solid fa-arrow-left mr-1"></i>Về trang chủ</a>
+        <a href="dashboard.html" class="text-sm text-blue-600 hover:underline"><i class="fa-solid fa-gauge mr-1"></i>Dashboard demo</a>
+    </div>
+    <p class="text-center text-sm text-gray-400 mt-4">&copy; 2026 DriveHub. All rights reserved.</p>
+</div>
+</body>
+</html>
