@@ -5,13 +5,13 @@ USE DriveHub;
 GO
 
 CREATE TABLE TaiKhoan (
-    id INT IDENTITY(1,1) PRIMARY KEY,
-    username NVARCHAR(50) NOT NULL UNIQUE,
-    password NVARCHAR(255) NOT NULL,
-    hoTen NVARCHAR(100) NOT NULL,
+    matk INT IDENTITY(1,1) PRIMARY KEY,
+    tendangnhap NVARCHAR(50) NOT NULL UNIQUE,
+    matkhau NVARCHAR(255) NOT NULL,
+    hoten NVARCHAR(100) NOT NULL,
     email NVARCHAR(100) NOT NULL,
-    vaiTro NVARCHAR(50) NOT NULL DEFAULT N'Nhân viên',
-    trangThai NVARCHAR(50) NOT NULL DEFAULT N'Hoạt động',
+    vaitro NVARCHAR(50) NOT NULL DEFAULT N'Nhân viên',
+    trangthai INT NOT NULL DEFAULT 1,
     ngayTao DATETIME DEFAULT GETDATE()
 );
 GO

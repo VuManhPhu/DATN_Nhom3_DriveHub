@@ -37,13 +37,13 @@ async function init() {
     await dbPool.request().query(`
       IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='TaiKhoan' AND xtype='U')
       CREATE TABLE TaiKhoan (
-        id INT IDENTITY(1,1) PRIMARY KEY,
-        username NVARCHAR(50) NOT NULL UNIQUE,
-        password NVARCHAR(255) NOT NULL,
-        hoTen NVARCHAR(100) NOT NULL,
+        matk INT IDENTITY(1,1) PRIMARY KEY,
+        tendangnhap NVARCHAR(50) NOT NULL UNIQUE,
+        matkhau NVARCHAR(255) NOT NULL,
+        hoten NVARCHAR(100) NOT NULL,
         email NVARCHAR(100) NOT NULL,
-        vaiTro NVARCHAR(50) NOT NULL DEFAULT N'Nhân viên',
-        trangThai NVARCHAR(50) NOT NULL DEFAULT N'Hoạt động',
+        vaitro NVARCHAR(50) NOT NULL DEFAULT N'Nhân viên',
+        trangthai INT NOT NULL DEFAULT 1,
         ngayTao DATETIME DEFAULT GETDATE()
       )
     `)
@@ -80,20 +80,20 @@ async function init() {
     // Seed admin account
     const existing = await dbPool
       .request()
-      .query("SELECT id FROM TaiKhoan WHERE username = 'admin'")
+      .query("SELECT matk FROM TaiKhoan WHERE tendangnhap = 'admin'")
 
     if (!existing.recordset[0]) {
       const hashedPassword = await bcrypt.hash('123', 10)
       await dbPool
         .request()
-        .input('username', 'admin')
-        .input('password', hashedPassword)
-        .input('hoTen', 'Quản trị viên')
+        .input('tendangnhap', 'admin')
+        .input('matkhau', hashedPassword)
+        .input('hoten', 'Quản trị viên')
         .input('email', 'admin@drivehub.com')
-        .input('vaiTro', 'Quản trị viên')
-        .input('trangThai', 'Hoạt động')
-        .query(`INSERT INTO TaiKhoan (username, password, hoTen, email, vaiTro, trangThai, ngayTao)
-                VALUES (@username, @password, @hoTen, @email, @vaiTro, @trangThai, GETDATE())`)
+        .input('vaitro', 'Quản trị viên')
+        .input('trangthai', 1)
+        .query(`INSERT INTO TaiKhoan (tendangnhap, matkhau, hoten, email, vaitro, trangthai, ngayTao)
+                VALUES (@tendangnhap, @matkhau, @hoten, @email, @vaitro, @trangthai, GETDATE())`)
       console.log('Created admin account (username: admin, password: 123)')
     } else {
       console.log('Admin account already exists')

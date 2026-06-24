@@ -25,7 +25,7 @@
           <el-input
             v-model="form.password"
             type="password"
-            placeholder="Mật khẩu"
+            placeholder="mat khau"
             :prefix-icon="Lock"
             show-password
           />
